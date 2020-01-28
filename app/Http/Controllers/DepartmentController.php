@@ -13,7 +13,11 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $info = [
+            'finalidade'=>'Serviço para cadastro de departamentos'
+        ];
+
+        return response($info,200);
     }
 
     /**
