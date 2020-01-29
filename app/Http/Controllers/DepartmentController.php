@@ -26,7 +26,7 @@ class DepartmentController extends Controller
 
         
         $especificacao =[
-            'Não existe departamentos com o mesmo nome'
+            'O campo codigo do departamento e departamento não pode ser duplicado'
         ];
 
         $info = [
@@ -79,7 +79,9 @@ class DepartmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $department = Department::find($id);
+
+        return response($department,200);
     }
 
     /**
@@ -102,7 +104,17 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $departamento = $request->input('departmento');
+        $codigo = $request->input('codigo');
+        $descricao = $request->input('descricao');
+
+        $department = Department::find($id);
+
+        $department->departamento = $departamento;
+        $department->codigo = $codigo;
+        $department->descricao = $descricao;
+
+        $department->save();
     }
 
     /**
@@ -113,6 +125,8 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $department = Department::find($id);
+        $department->delete();
+        return response(204);
     }
 }

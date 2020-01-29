@@ -19,3 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('department','DepartmentController@index');
 Route::post('department','DepartmentController@store');
+Route::get('department/{id}','DepartmentController@show');
+Route::put('department/{id}','DepartmentController@update');
+Route::delete('department/{id}','DepartmentController@destroy');
