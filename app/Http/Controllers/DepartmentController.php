@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Department;
 
 class DepartmentController extends Controller
 {
@@ -13,9 +14,15 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $info = [
-            'finalidade'=>'Serviço para cadastro de departamentos'
+        $especificacao =[
+            'Não existe departamentos com o mesmo nome'
         ];
+        
+        $info = [
+            'finalidade'=>'Serviço para cadastro de departamentos',
+            $especificacao
+        ];
+
 
         return response($info,200);
     }
@@ -23,11 +30,11 @@ class DepartmentController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responsedes
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -38,7 +45,17 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $department = new Department();
+
+        $departamento = $request->input('department');
+        $descricao = $request->input('descricao');
+
+        $department->departamento = $departamento;
+        $department->descricao = $descricao;
+
+        $department->save();
+
+        return response(201);
     }
 
     /**
