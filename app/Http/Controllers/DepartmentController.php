@@ -23,15 +23,14 @@ class DepartmentController extends Controller
         *    "descricao":"minha descrição"
         *}
         */
-
         
         $especificacao =[
-            'O campo codigo do departamento e departamento não pode ser duplicado'
+            'O campo codigo do departamento e departamento não pode ser duplicado',
         ];
 
         $info = [
             'finalidade'=>'Serviço para cadastro de departamentos',
-            $especificacao
+            'especificacao'=>$especificacao
         ];
 
         
@@ -68,7 +67,7 @@ class DepartmentController extends Controller
 
         $department->save();
 
-        return response(201);
+        return response('',201);
     }
 
     /**
@@ -104,7 +103,7 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $departamento = $request->input('departmento');
+        $departamento = $request->input('departamento');
         $codigo = $request->input('codigo');
         $descricao = $request->input('descricao');
 
@@ -115,6 +114,7 @@ class DepartmentController extends Controller
         $department->descricao = $descricao;
 
         $department->save();
+        return response('',204);
     }
 
     /**
@@ -127,6 +127,6 @@ class DepartmentController extends Controller
     {
         $department = Department::find($id);
         $department->delete();
-        return response(204);
+        return response('',204);
     }
 }
