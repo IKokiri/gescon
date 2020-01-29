@@ -14,16 +14,27 @@ class DepartmentController extends Controller
      */
     public function index()
     {
+        
+        /**
+         * STORE
+        *{
+        *    "departmento":"DEPRO",
+        *    "codigo":"4040",
+        *    "descricao":"minha descrição"
+        *}
+        */
+
+        
         $especificacao =[
             'Não existe departamentos com o mesmo nome'
         ];
-        
+
         $info = [
             'finalidade'=>'Serviço para cadastro de departamentos',
             $especificacao
         ];
 
-
+        
         return response($info,200);
     }
 
@@ -47,10 +58,12 @@ class DepartmentController extends Controller
     {
         $department = new Department();
 
-        $departamento = $request->input('department');
+        $departamento = $request->input('departmento');
+        $codigo = $request->input('codigo');
         $descricao = $request->input('descricao');
 
         $department->departamento = $departamento;
+        $department->codigo = $codigo;
         $department->descricao = $descricao;
 
         $department->save();
