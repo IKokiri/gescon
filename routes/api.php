@@ -22,3 +22,4 @@ Route::post('department','DepartmentController@store');
 Route::get('department/{id}','DepartmentController@show');
 Route::put('department/{id}','DepartmentController@update');
 Route::delete('department/{id}','DepartmentController@destroy');
+
