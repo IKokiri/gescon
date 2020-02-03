@@ -13,7 +13,17 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $especificacao =[
+            '',
+        ];
+
+        $info = [
+            'finalidade'=>'Serviço para cadastramento das empresas',
+            'especificacao'=>$especificacao
+        ];
+
+        
+        return response($info,200);
     }
 
     /**
@@ -23,7 +33,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
