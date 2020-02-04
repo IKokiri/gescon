@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\DepartmentRequest;
 use App\Department;
 
 class DepartmentController extends Controller
@@ -53,9 +54,9 @@ class DepartmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DepartmentRequest $request)
     {
-
+        
         $department = new Department();
 
         $departamento = $request->input('departamento');
